@@ -1,0 +1,56 @@
+﻿<Window x:Class="DevEQ.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DevEQ" 
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:DevEQ_ViewModel/>
+    </Window.DataContext>
+
+    <Grid x:Name="G_Main">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="30*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="G_PlotButtonsAOF" Grid.Column="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid x:Name="G_PlotAndButtons" Grid.Column="0" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="30*"/>
+                    <ColumnDefinition Width="70*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel x:Name ="SP_Buttons">
+                    <StackPanel.Resources>
+                        <Style TargetType="{x:Type Button}">
+                            <Setter Property="Margin" Value="10,10,10, 0"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Button Command= "{Binding OpenDev}">Open Dev</Button>
+                    <Button>Save</Button>
+                    <Button>Rewrite Current Dev</Button>
+                    <Button>Calibration</Button>
+                </StackPanel>
+                <lvc:CartesianChart  Grid.Column="1">
+                    <lvc:CartesianChart.Series>
+                        <lvc:LineSeries Values="{Binding Points}"/>
+                    </lvc:CartesianChart.Series>
+                </lvc:CartesianChart>
+            </Grid>
+        </Grid>
+        <ListBox x:Name="LB_Logger" ItemsSource="{Binding Logs}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>

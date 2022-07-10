@@ -1,0 +1,305 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.8": {
+      "LiveCharts/0.9.7": {
+        "type": "package",
+        "compile": {
+          "lib/net45/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Wpf/0.9.7": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.9.7"
+        },
+        "compile": {
+          "lib/net45/LiveCharts.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiveCharts.Wpf.dll": {}
+        }
+      },
+      "MathNet.Numerics/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net48/MathNet.Numerics.dll": {}
+        },
+        "runtime": {
+          "lib/net48/MathNet.Numerics.dll": {}
+        }
+      },
+      "AO_Lib/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/AO_Lib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AO_Lib.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.8/win": {
+      "LiveCharts/0.9.7": {
+        "type": "package",
+        "compile": {
+          "lib/net45/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Wpf/0.9.7": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.9.7"
+        },
+        "compile": {
+          "lib/net45/LiveCharts.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiveCharts.Wpf.dll": {}
+        }
+      },
+      "MathNet.Numerics/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net48/MathNet.Numerics.dll": {}
+        },
+        "runtime": {
+          "lib/net48/MathNet.Numerics.dll": {}
+        }
+      },
+      "AO_Lib/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/AO_Lib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AO_Lib.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.8/win-x64": {
+      "LiveCharts/0.9.7": {
+        "type": "package",
+        "compile": {
+          "lib/net45/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Wpf/0.9.7": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.9.7"
+        },
+        "compile": {
+          "lib/net45/LiveCharts.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiveCharts.Wpf.dll": {}
+        }
+      },
+      "MathNet.Numerics/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net48/MathNet.Numerics.dll": {}
+        },
+        "runtime": {
+          "lib/net48/MathNet.Numerics.dll": {}
+        }
+      },
+      "AO_Lib/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/AO_Lib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AO_Lib.dll": {}
+        }
+      }
+    },
+    ".NETFramework,Version=v4.8/win-x86": {
+      "LiveCharts/0.9.7": {
+        "type": "package",
+        "compile": {
+          "lib/net45/LiveCharts.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiveCharts.dll": {}
+        }
+      },
+      "LiveCharts.Wpf/0.9.7": {
+        "type": "package",
+        "dependencies": {
+          "LiveCharts": "0.9.7"
+        },
+        "compile": {
+          "lib/net45/LiveCharts.Wpf.dll": {}
+        },
+        "runtime": {
+          "lib/net45/LiveCharts.Wpf.dll": {}
+        }
+      },
+      "MathNet.Numerics/5.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net48/MathNet.Numerics.dll": {}
+        },
+        "runtime": {
+          "lib/net48/MathNet.Numerics.dll": {}
+        }
+      },
+      "AO_Lib/1.0.0": {
+        "type": "project",
+        "compile": {
+          "bin/placeholder/AO_Lib.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AO_Lib.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LiveCharts/0.9.7": {
+      "sha512": "p4xyBrUaNNfkWZSNsIle0r51cyVyFg0Yi0uBRZM5GQtdFiA/7guZHlffFyNUILIdux10Ch2hUaJpcZENVU9aaQ==",
+      "type": "package",
+      "path": "livecharts/0.9.7",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/LiveCharts.dll",
+        "lib/net40/LiveCharts.pdb",
+        "lib/net40/LiveCharts.xml",
+        "lib/net45/LiveCharts.dll",
+        "lib/net45/LiveCharts.pdb",
+        "lib/net45/LiveCharts.xml",
+        "lib/portable-net45+win8+wp8/LiveCharts.XML",
+        "lib/portable-net45+win8+wp8/LiveCharts.dll",
+        "lib/portable-net45+win8+wp8/LiveCharts.pdb",
+        "livecharts.0.9.7.nupkg.sha512",
+        "livecharts.nuspec",
+        "readme.txt"
+      ]
+    },
+    "LiveCharts.Wpf/0.9.7": {
+      "sha512": "lv6YZoK0B4yWykMq5b9grZXtIbTj+OWu4sVN9GDpdgV6zffu64m4d5CW8KSjfSl9rB8VU649x1NZvhoU67hCDg==",
+      "type": "package",
+      "path": "livecharts.wpf/0.9.7",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/LiveCharts.Wpf.XML",
+        "lib/net40/LiveCharts.Wpf.dll",
+        "lib/net40/LiveCharts.Wpf.pdb",
+        "lib/net45/LiveCharts.Wpf.XML",
+        "lib/net45/LiveCharts.Wpf.dll",
+        "lib/net45/LiveCharts.Wpf.pdb",
+        "livecharts.wpf.0.9.7.nupkg.sha512",
+        "livecharts.wpf.nuspec",
+        "tools/install.ps1"
+      ]
+    },
+    "MathNet.Numerics/5.0.0": {
+      "sha512": "pg1W2VwaEQMAiTpGK840hZgzavnqjlCMTVSbtVCXVyT+7AX4mc1o89SPv4TBlAjhgCOo9c1Y+jZ5m3ti2YgGgA==",
+      "type": "package",
+      "path": "mathnet.numerics/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "icon.png",
+        "lib/net461/MathNet.Numerics.dll",
+        "lib/net461/MathNet.Numerics.xml",
+        "lib/net48/MathNet.Numerics.dll",
+        "lib/net48/MathNet.Numerics.xml",
+        "lib/net5.0/MathNet.Numerics.dll",
+        "lib/net5.0/MathNet.Numerics.xml",
+        "lib/net6.0/MathNet.Numerics.dll",
+        "lib/net6.0/MathNet.Numerics.xml",
+        "lib/netstandard2.0/MathNet.Numerics.dll",
+        "lib/netstandard2.0/MathNet.Numerics.xml",
+        "mathnet.numerics.5.0.0.nupkg.sha512",
+        "mathnet.numerics.nuspec"
+      ]
+    },
+    "AO_Lib/1.0.0": {
+      "type": "project",
+      "path": "../../AO-Lib/AO_Lib.csproj",
+      "msbuildProject": "../../AO-Lib/AO_Lib.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.8": [
+      "AO_Lib >= 1.0.0",
+      "LiveCharts.Wpf >= 0.9.7",
+      "MathNet.Numerics >= 5.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\anton\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj",
+      "projectName": "DevEQ",
+      "projectPath": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj",
+      "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
+      "outputPath": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "configFilePaths": [
+        "C:\\Users\\anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net48"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net48": {
+          "projectReferences": {
+            "E:\\Programming\\GitHub\\AO-Lib\\AO_Lib.csproj": {
+              "projectPath": "E:\\Programming\\GitHub\\AO-Lib\\AO_Lib.csproj"
+            }
+          }
+        }
+      }
+    },
+    "frameworks": {
+      "net48": {
+        "dependencies": {
+          "LiveCharts.Wpf": {
+            "target": "Package",
+            "version": "[0.9.7, )"
+          },
+          "MathNet.Numerics": {
+            "target": "Package",
+            "version": "[5.0.0, )"
+          }
+        }
+      }
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}
