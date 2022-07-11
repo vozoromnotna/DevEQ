@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "GrZNCcVMRfe1IWSeVff+PLPGGISoTEzJr+g5jPmssOjWdhG3eFRPmXC2EIp3DMBhhzgSdpu9UjSSzihqG3h6PQ==",
+  "dgSpecHash": "EvSxI6iWMCApWfijcFs7+wTrtBCReF8zng411JjcV+MBtZRiZ934i2KQ01Xd2qUonelOoliQfj5ug2TZrklbcg==",
   "success": true,
   "projectFilePath": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\anton\\.nuget\\packages\\extended.wpf.toolkit\\4.3.0\\extended.wpf.toolkit.4.3.0.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512"

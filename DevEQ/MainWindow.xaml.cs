@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LiveCharts.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,48 @@ namespace DevEQ
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        int EditablePoint;
+        private void Chart_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.RightButton == MouseButtonState.Pressed) return;
+            var point = Chart.ConvertToChartValues(e.GetPosition(Chart));
+            ViewModel.Points[EditablePoint].X = point.X;
+            ViewModel.Points[EditablePoint].Y = point.Y;
+
+        }
+
+        private void Chart_MouseUp(object sender, MouseButtonEventArgs e)
+        {
+            Chart.MouseUp -= Chart_MouseUp;
+            Chart.MouseMove -= Chart_MouseMove;
+        }
+
+        private void Chart_DataClick(object sender, LiveCharts.ChartPoint chartPoint)
+        {
+            if(Mouse.RightButton == MouseButtonState.Pressed)
+            {
+                EditablePoint = ViewModel.GetIndexByPoint(chartPoint);
+                if (EditablePoint == -1) return;
+                ViewModel.RemovePoint(EditablePoint);
+                return;
+            }
+            EditablePoint = ViewModel.GetIndexByPoint(chartPoint);
+            if (EditablePoint == -1) return;
+            Chart.MouseUp += Chart_MouseUp;
+            Chart.MouseMove += Chart_MouseMove;
+        }
+
+        private void Chart_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var point = Chart.ConvertToChartValues(e.GetPosition(Chart));
+            ViewModel.AddPoint(point);
+        }
+
+        private void Chart_MouseRightButtonDown(object sender, MouseButtonEventArgs e)
+        {
+
         }
     }
 }

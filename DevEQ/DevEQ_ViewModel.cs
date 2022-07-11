@@ -23,6 +23,37 @@ namespace DevEQ
             set;
         }
 
+
+        public double CurrentHZ
+        {
+            get
+            {
+                return MainModel.Current_HZ;
+            }
+            set
+            {
+                MainModel.Current_HZ = value;
+                Message("Установлена частота " + value.ToString("0.000") + " МГц; Соответствующая длина волны" + CurrentWL.ToString("0.000") + " нм.");
+                OnPropertyChanged();
+                OnPropertyChanged("CurrentWL");
+            }
+        }
+
+        public double CurrentWL
+        {
+            get
+            {
+                return MainModel.Current_WL;
+            }
+            set
+            {
+                MainModel.Current_WL = value;
+                Message("Установлена длина волны " + value.ToString("0.000") + " нм; Соответствующая частота " + CurrentHZ.ToString("0.000") + " МГц.");
+                OnPropertyChanged();
+                OnPropertyChanged("CurrentHZ");
+            }
+        }
+
         public void Message(string message)
         {
             if (null == message)
@@ -30,7 +61,7 @@ namespace DevEQ
                 throw new ArgumentNullException("message");
             }
             string data = string.Format("{0:yyyy-MM-dd HH:mm:ss.fff}: {1}", DateTime.Now, message);
-            Logs.Add(data);
+            Logs.Insert(0,data);
         }
         private ChartValues<ObservablePoint> points;
         public ChartValues<ObservablePoint> Points
@@ -60,10 +91,85 @@ namespace DevEQ
             else { Message("Обнаружен подключенный АО фильтр. Тип фильтра: " + MainModel.Filter.FilterType.ToString()); }
 
             Points = new ChartValues<ObservablePoint>();
+            
 
         }
 
+        private void Points_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add)
+            {
+
+                var point = e.NewItems[0] as ObservablePoint;
+                point.PropertyChanged += (s, p) =>
+                {
+                    var index = Points.IndexOf(s);
+                    MainModel.X[index] = Points[index].X;
+                    MainModel.Y[index] = Points[index].Y;
+                };
+                MainModel.InsertPoint(point.X, point.Y, e.NewStartingIndex);
+            }
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
+            {
+                var index = e.OldStartingIndex;
+                MainModel.RemovePoint(index);
+            }
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Replace)
+            {
+                var new_point = e.NewItems[0] as ObservablePoint;
+                var old_point = e.OldItems[0] as ObservablePoint;
+
+                var old_index = e.OldStartingIndex;
+                var new_index = e.NewStartingIndex;
+
+                MainModel.X[old_index] = old_point.X;
+                MainModel.Y[old_index] = old_point.Y;
+
+                MainModel.X[new_index] = new_point.X;
+                MainModel.Y[new_index] = new_point.Y;
+            }
+        }
+
+        public void AddPoint(Point cp)
+        {
+            for(int i = 0; i < Points.Count; i++)
+            {
+                if (cp.X < Points[i].X)
+                {
+                    Points.Insert(i, new ObservablePoint(cp.X, cp.Y));
+                    break;
+                }
+                    
+            }
+        }
+
+        public void RemovePoint(int index)
+        {
+            Points.RemoveAt(index);
+        }
+
         public DevEQ_Model MainModel { get; private set; }
+
+        public int GetIndexByPoint(ChartPoint cp)
+        {
+            for (int i = 0; i < Points.Count; i++)
+            {
+                if (Points[i].X == cp.X)
+                    return i;
+            }    
+            return -1;
+        }
+        public int GetIndexByPoint(Point cp)
+        {
+            for (int i = 0; i < Points.Count; i++)
+            {
+                if (Points[i].X == cp.X)
+                    if (Points[i].Y == cp.Y)
+                        return i;
+            }
+            return -1;
+        }
+
 
         #region Комманды
         private RelayCommand open_dev;
@@ -85,17 +191,59 @@ namespace DevEQ
                           Message(MainModel.DevPath + " - файл считан успешно!");
                       }
 
-                      Points.Clear();
+                      Points = new ChartValues<ObservablePoint>();
                       for (int i = 0; i < MainModel.X.Count; i++)
                       {
                           Points.Add(new ObservablePoint(MainModel.X[i], MainModel.Y[i]));
-                          Points[i].PropertyChanged += (s, e) => { MainModel.X[i] = Points[i].X; MainModel.Y[i] = Points[i].Y; };
+                          Points[i].PropertyChanged += (s, e) =>
+                          {
+                              var index = Points.IndexOf(s);
+                              MainModel.X[index] = Points[index].X;
+                              MainModel.Y[index] = Points[index].Y;
+                          };
+                      }
+                      Points.CollectionChanged += Points_CollectionChanged;
+                      MainModel.Current_HZ = MainModel.Filter.HZ_Min;
+                      MainModel.Current_WL = MainModel.Filter.WL_Max;
+                      OnPropertyChanged("CurrentHZ");
+                      OnPropertyChanged("CurrentWL");
+                  }));
+            }
+        }
+
+        private RelayCommand save_dev;
+        public RelayCommand SaveDev
+        {
+            get
+            {
+                return save_dev ??
+                  (save_dev = new RelayCommand(obj =>
+                  {
+                      SaveFileDialog SAF = new SaveFileDialog();
+                      SAF.Filter = "DEV config files (*.dev)|*.dev";
+                      SAF.DefaultExt = ".dev";
+                      SAF.FilterIndex = 0;
+                      SAF.RestoreDirectory = true;
+
+
+                      if (SAF.ShowDialog() == true)
+                      {
+                          string FileName = SAF.FileName;
+                          try
+                          {
+                              MainModel.SaveFileAsync(FileName);
+                          }
+                          catch (Exception ex)
+                          {
+                              Message(ex.Message);
+                          }
                       }
                   }));
             }
         }
+
         #endregion
-       
+
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string prop = "")
         {

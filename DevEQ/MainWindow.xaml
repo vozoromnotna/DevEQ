@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DevEQ" 
-        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.DataContext>
-        <local:DevEQ_ViewModel/>
+        <local:DevEQ_ViewModel x:Name="ViewModel"/>
     </Window.DataContext>
 
     <Grid x:Name="G_Main">
@@ -25,8 +25,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
+                <RowDefinition Height="75*"/>
+                <RowDefinition Height="25*"/>
             </Grid.RowDefinitions>
             <Grid x:Name="G_PlotAndButtons" Grid.Column="0" Grid.Row="0">
                 <Grid.ColumnDefinitions>
@@ -40,15 +40,39 @@
                         </Style>
                     </StackPanel.Resources>
                     <Button Command= "{Binding OpenDev}">Open Dev</Button>
-                    <Button>Save</Button>
+                    <Button Command="{Binding SaveDev}">Save</Button>
                     <Button>Rewrite Current Dev</Button>
                     <Button>Calibration</Button>
                 </StackPanel>
-                <lvc:CartesianChart  Grid.Column="1">
+                <lvc:CartesianChart x:Name="Chart" Grid.Column="1" DataClick="Chart_DataClick" MouseDoubleClick="Chart_MouseDoubleClick">
+                    <lvc:CartesianChart.AxisX>
+                        <lvc:Axis MinValue="{Binding MainModel.minX}" MaxValue="{Binding MainModel.maxX}"/>
+                    </lvc:CartesianChart.AxisX>
+                    <lvc:CartesianChart.AxisY>
+                        <lvc:Axis MaxValue="2700" MinValue="0"/>
+                    </lvc:CartesianChart.AxisY>
                     <lvc:CartesianChart.Series>
                         <lvc:LineSeries Values="{Binding Points}"/>
                     </lvc:CartesianChart.Series>
                 </lvc:CartesianChart>
+            </Grid>
+            <Grid x:Name="AOF_Controll" Grid.Column="0" Margin="0,1,0,0" Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="107*"/>
+                    <ColumnDefinition Width="104*"/>
+                    <ColumnDefinition Width="112*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">f, MHz</Label>
+                <xctk:DoubleUpDown Margin="10,10,10,10" Grid.Row="0" Grid.Column="1" Value="{Binding CurrentHZ}" Minimum="{Binding MainModel.minHZ}" Maximum="{Binding MainModel.maxHZ}" CultureInfo="ru-RU"/>
+                <Slider Margin="10,10,10,10" Grid.Row="0" Grid.Column="2" Value="{Binding CurrentHZ}" Maximum="{Binding MainModel.maxHZ}" Minimum="{Binding MainModel.minHZ}" VerticalAlignment="Center"/>
+                <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center">λ, nm</Label>
+                <xctk:DoubleUpDown Margin="10,10,10,10" Grid.Row="1" Grid.Column="1" Value="{Binding CurrentWL}" Minimum="{Binding MainModel.minWL}" Maximum="{Binding MainModel.maxWL}"/>
+                <Slider Margin="10,10,10,10" Grid.Row="1" Grid.Column="2" Value="{Binding CurrentWL}" Maximum="{Binding MainModel.maxWL}" Minimum="{Binding MainModel.minWL}" VerticalAlignment="Center"/>
+                <Grid Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             </Grid>
         </Grid>
         <ListBox x:Name="LB_Logger" ItemsSource="{Binding Logs}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
