@@ -10,6 +10,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using MathNet.Numerics.Interpolation;
+using System.Timers;
 
 namespace DevEQ
 {
@@ -76,18 +77,30 @@ namespace DevEQ
 
         }
 
+        Timer AOF_Set_Timer;
         private void CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
-            Interpolator = MathNet.Numerics.Interpolate.CubicSpline(X, Y);
-            for (int i = 0; i < Hzs.Count; i++)
+            if (AOF_Set_Timer != null)
+                if (AOF_Set_Timer.Enabled) AOF_Set_Timer.Stop();
+            AOF_Set_Timer = new System.Timers.Timer(10);
+            AOF_Set_Timer.AutoReset = false;
+            AOF_Set_Timer.Elapsed += (s, p) =>
             {
-                Intens[i] = Interpolator.Interpolate(Hzs[i]);
-            }
-            var HzToAOF = Double2FloatArray(Hzs);
-            var IntensToAOF = Double2FloatArray(Intens);
-            var WlsToAof = Double2FloatArray(Wls);
-            Filter.EditAllData(WlsToAof.Reverse().ToArray(), HzToAOF.Reverse().ToArray(), IntensToAOF.Reverse().ToArray());
-            Filter.Set_Hz(Filter.HZ_Current);
+                Interpolator = MathNet.Numerics.Interpolate.CubicSpline(X, Y);
+                for (int i = 0; i < Hzs.Count; i++)
+                {
+                    Intens[i] = Interpolator.Interpolate(Hzs[i]);
+                }
+                var HzToAOF = Double2FloatArray(Hzs);
+                var IntensToAOF = Double2FloatArray(Intens);
+                var WlsToAof = Double2FloatArray(Wls);
+                Filter.EditAllData(WlsToAof.Reverse().ToArray(), HzToAOF.Reverse().ToArray(), IntensToAOF.Reverse().ToArray());
+                Filter.Set_Hz(Filter.HZ_Current);
+
+            };
+            AOF_Set_Timer.Enabled = true;
+
+            
             
         }
 
