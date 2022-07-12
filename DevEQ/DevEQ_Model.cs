@@ -35,6 +35,7 @@ namespace DevEQ
             OnPropertyChanged("maxHZ");
         }
 
+
         public double Current_HZ
         { 
             get
@@ -118,8 +119,8 @@ namespace DevEQ
         private double max_x = 120;
         public double maxX { get { return max_x; } private set { max_x = value; OnPropertyChanged(); } }
 
-        public double minY { get; private set; }
-        public double maxY { get; private set; }
+        public double minY { get { return 0; } }
+        public double maxY { get { return 2700; } }
 
         public double minWL
         {
@@ -241,6 +242,8 @@ namespace DevEQ
 
                 IntializateInterpolator();
 
+                OnPropertyChanged();
+
             } 
         }
 
@@ -249,8 +252,8 @@ namespace DevEQ
             Interpolator = MathNet.Numerics.Interpolate.CubicSpline(Hzs, Intens);
             minX = Hzs.Min();
             maxX = Hzs.Max();
-            minY = Intens.Min();
-            maxY = Intens.Max();
+            //minY = Intens.Min();
+            //maxY = Intens.Max();
             X = new ObservableCollection<double>();
             Y = new ObservableCollection<double>();
 

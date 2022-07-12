@@ -6,7 +6,11 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
+using System.Windows.Threading;
+using DependenciesTracking;
+using DependenciesTracking.Interfaces;
 using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
@@ -23,6 +27,7 @@ namespace DevEQ
             set;
         }
 
+        Timer AOF_Set_Timer;
 
         public double CurrentHZ
         {
@@ -32,10 +37,19 @@ namespace DevEQ
             }
             set
             {
-                MainModel.Current_HZ = value;
-                Message("Установлена частота " + value.ToString("0.000") + " МГц; Соответствующая длина волны" + CurrentWL.ToString("0.000") + " нм.");
-                OnPropertyChanged();
-                OnPropertyChanged("CurrentWL");
+                if (AOF_Set_Timer != null)
+                    if (AOF_Set_Timer.Enabled) AOF_Set_Timer.Stop();
+                AOF_Set_Timer = new System.Timers.Timer(5);
+                AOF_Set_Timer.AutoReset = false;
+                AOF_Set_Timer.Elapsed += (s, e) =>
+                {
+                    MainModel.Current_HZ = value;
+                    System.Windows.Application.Current.Dispatcher.Invoke(
+                    (Action)(() => { Message("Установлена частота " + value.ToString("0.000") + " МГц; Соответствующая длина волны " + CurrentWL.ToString("0.000") + " нм."); }));
+                    OnPropertyChanged();
+                    OnPropertyChanged("CurrentWL");
+                };
+                AOF_Set_Timer.Enabled = true;
             }
         }
 
@@ -47,13 +61,41 @@ namespace DevEQ
             }
             set
             {
-                MainModel.Current_WL = value;
-                Message("Установлена длина волны " + value.ToString("0.000") + " нм; Соответствующая частота " + CurrentHZ.ToString("0.000") + " МГц.");
-                OnPropertyChanged();
-                OnPropertyChanged("CurrentHZ");
+                if (AOF_Set_Timer != null)
+                    if (AOF_Set_Timer.Enabled) AOF_Set_Timer.Stop();
+                AOF_Set_Timer = new System.Timers.Timer(5);
+                AOF_Set_Timer.AutoReset = false;
+                AOF_Set_Timer.Elapsed += (s, e) =>
+                {
+                    MainModel.Current_WL = value;
+                    System.Windows.Application.Current.Dispatcher.Invoke(
+                    (Action)(() => { Message("Установлена длина волны " + value.ToString("0.000") + " нм; Соответствующая частота " + CurrentHZ.ToString("0.000") + " МГц."); }));
+                    OnPropertyChanged();
+                    OnPropertyChanged("CurrentHZ");
+                };
+                AOF_Set_Timer.Enabled = true;
             }
         }
 
+        public bool IsDevRead
+        {
+            get
+            {
+                if (MainModel.Filter == null) return false;
+                if (MainModel.DevPath == null) return false;
+                return true;
+            }
+        }
+        public string DevName
+        {
+            get
+            {
+                if (!IsDevRead) return "";
+                var index = MainModel.DevPath.LastIndexOf("\\");
+                var str = MainModel.DevPath.Substring(index + 1);
+                return str;
+            }
+        }
         public void Message(string message)
         {
             if (null == message)
@@ -91,9 +133,9 @@ namespace DevEQ
             else { Message("Обнаружен подключенный АО фильтр. Тип фильтра: " + MainModel.Filter.FilterType.ToString()); }
 
             Points = new ChartValues<ObservablePoint>();
-            
 
         }
+
 
         private void Points_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
@@ -128,6 +170,7 @@ namespace DevEQ
                 MainModel.X[new_index] = new_point.X;
                 MainModel.Y[new_index] = new_point.Y;
             }
+            OnPropertyChanged("Points");
         }
 
         public void AddPoint(Point cp)
@@ -189,6 +232,8 @@ namespace DevEQ
                       {
                           MainModel.DevPath = OPF.FileName;
                           Message(MainModel.DevPath + " - файл считан успешно!");
+                          OnPropertyChanged("IsDevRead");
+                          OnPropertyChanged("DevName");
                       }
 
                       Points = new ChartValues<ObservablePoint>();
@@ -207,6 +252,8 @@ namespace DevEQ
                       MainModel.Current_WL = MainModel.Filter.WL_Max;
                       OnPropertyChanged("CurrentHZ");
                       OnPropertyChanged("CurrentWL");
+                      OnPropertyChanged("Points");
+
                   }));
             }
         }

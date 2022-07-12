@@ -21,9 +21,12 @@ namespace DevEQ
     /// </summary>
     public partial class MainWindow : Window
     {
+        ControlLsitView CLV;
         public MainWindow()
         {
             InitializeComponent();
+            CLV = new ControlLsitView(G_ManualControl, ViewModel);
+
         }
 
         int EditablePoint;

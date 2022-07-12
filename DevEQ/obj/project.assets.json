@@ -2,6 +2,15 @@
   "version": 3,
   "targets": {
     ".NETFramework,Version=v4.8": {
+      "DependenciesTracking/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DependenciesTracking.dll": {}
+        },
+        "runtime": {
+          "lib/net40/DependenciesTracking.dll": {}
+        }
+      },
       "Extended.Wpf.Toolkit/4.3.0": {
         "type": "package",
         "compile": {
@@ -87,8 +96,15 @@
           "lib/net48/MathNet.Numerics.dll": {}
         }
       },
+      "PrettyBin/1.1.0": {
+        "type": "package"
+      },
       "AO_Lib/1.0.0": {
         "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "PrettyBin": "1.1.0"
+        },
         "compile": {
           "bin/placeholder/AO_Lib.dll": {}
         },
@@ -98,6 +114,15 @@
       }
     },
     ".NETFramework,Version=v4.8/win": {
+      "DependenciesTracking/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DependenciesTracking.dll": {}
+        },
+        "runtime": {
+          "lib/net40/DependenciesTracking.dll": {}
+        }
+      },
       "Extended.Wpf.Toolkit/4.3.0": {
         "type": "package",
         "compile": {
@@ -183,8 +208,15 @@
           "lib/net48/MathNet.Numerics.dll": {}
         }
       },
+      "PrettyBin/1.1.0": {
+        "type": "package"
+      },
       "AO_Lib/1.0.0": {
         "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "PrettyBin": "1.1.0"
+        },
         "compile": {
           "bin/placeholder/AO_Lib.dll": {}
         },
@@ -194,6 +226,15 @@
       }
     },
     ".NETFramework,Version=v4.8/win-x64": {
+      "DependenciesTracking/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DependenciesTracking.dll": {}
+        },
+        "runtime": {
+          "lib/net40/DependenciesTracking.dll": {}
+        }
+      },
       "Extended.Wpf.Toolkit/4.3.0": {
         "type": "package",
         "compile": {
@@ -279,8 +320,15 @@
           "lib/net48/MathNet.Numerics.dll": {}
         }
       },
+      "PrettyBin/1.1.0": {
+        "type": "package"
+      },
       "AO_Lib/1.0.0": {
         "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "PrettyBin": "1.1.0"
+        },
         "compile": {
           "bin/placeholder/AO_Lib.dll": {}
         },
@@ -290,6 +338,15 @@
       }
     },
     ".NETFramework,Version=v4.8/win-x86": {
+      "DependenciesTracking/1.0.4": {
+        "type": "package",
+        "compile": {
+          "lib/net40/DependenciesTracking.dll": {}
+        },
+        "runtime": {
+          "lib/net40/DependenciesTracking.dll": {}
+        }
+      },
       "Extended.Wpf.Toolkit/4.3.0": {
         "type": "package",
         "compile": {
@@ -375,8 +432,15 @@
           "lib/net48/MathNet.Numerics.dll": {}
         }
       },
+      "PrettyBin/1.1.0": {
+        "type": "package"
+      },
       "AO_Lib/1.0.0": {
         "type": "project",
+        "framework": ".NETFramework,Version=v4.8",
+        "dependencies": {
+          "PrettyBin": "1.1.0"
+        },
         "compile": {
           "bin/placeholder/AO_Lib.dll": {}
         },
@@ -387,6 +451,19 @@
     }
   },
   "libraries": {
+    "DependenciesTracking/1.0.4": {
+      "sha512": "qStmMgqRw7ocRRZ9huOTKeHs+Qs6AdAK8UZ9yhwYIJwtlz/Mu/wC4nPSLmbEqqeKHE2WUv+hwwlf2AA1s3euyw==",
+      "type": "package",
+      "path": "dependenciestracking/1.0.4",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "dependenciestracking.1.0.4.nupkg.sha512",
+        "dependenciestracking.nuspec",
+        "lib/net40/DependenciesTracking.dll",
+        "lib/portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1/DependenciesTracking.dll"
+      ]
+    },
     "Extended.Wpf.Toolkit/4.3.0": {
       "sha512": "leG4va9wdAk0R92UoycOwacWGPvgdWpNkfezAojkfjg+zxJlvRXUS4hR/urPVzX2dRZh8c7UxmdBIOW7O6N+OA==",
       "type": "package",
@@ -481,6 +558,26 @@
         "mathnet.numerics.nuspec"
       ]
     },
+    "PrettyBin/1.1.0": {
+      "sha512": "1XX4ibVi/4y96RJwBx8jSuYnOFeB3pepJtH6Vpl1gtsZamRuF3NGtywaJmhBlQPsBBi2ScnvYEmD7mVIsr2/iQ==",
+      "type": "package",
+      "path": "prettybin/1.1.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "content/App.config.install.xdt",
+        "license.txt",
+        "makePackage.bat",
+        "nuget.exe",
+        "prettybin.1.1.0.nupkg.sha512",
+        "prettybin.nuspec",
+        "tools/init.ps1",
+        "tools/install.ps1",
+        "tools/uninstall.ps1"
+      ]
+    },
     "AO_Lib/1.0.0": {
       "type": "project",
       "path": "../../AO-Lib/AO_Lib.csproj",
@@ -490,26 +587,32 @@
   "projectFileDependencyGroups": {
     ".NETFramework,Version=v4.8": [
       "AO_Lib >= 1.0.0",
+      "DependenciesTracking >= 1.0.4",
       "Extended.Wpf.Toolkit >= 4.3.0",
       "LiveCharts.Wpf >= 0.9.7",
       "MathNet.Numerics >= 5.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\anton\\.nuget\\packages\\": {}
+    "C:\\Users\\anton\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj",
+      "projectUniqueName": "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\DevEQ.csproj",
       "projectName": "DevEQ",
-      "projectPath": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj",
+      "projectPath": "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\DevEQ.csproj",
       "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
-      "outputPath": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\obj\\",
+      "outputPath": "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
         "C:\\Users\\anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -522,8 +625,8 @@
       "frameworks": {
         "net48": {
           "projectReferences": {
-            "E:\\Programming\\GitHub\\AO-Lib\\AO_Lib.csproj": {
-              "projectPath": "E:\\Programming\\GitHub\\AO-Lib\\AO_Lib.csproj"
+            "C:\\Users\\anton\\Programming\\AO-Lib\\AO_Lib.csproj": {
+              "projectPath": "C:\\Users\\anton\\Programming\\AO-Lib\\AO_Lib.csproj"
             }
           }
         }
@@ -532,6 +635,10 @@
     "frameworks": {
       "net48": {
         "dependencies": {
+          "DependenciesTracking": {
+            "target": "Package",
+            "version": "[1.0.4, )"
+          },
           "Extended.Wpf.Toolkit": {
             "target": "Package",
             "version": "[4.3.0, )"
