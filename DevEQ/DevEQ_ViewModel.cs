@@ -39,7 +39,7 @@ namespace DevEQ
             {
                 if (AOF_Set_Timer != null)
                     if (AOF_Set_Timer.Enabled) AOF_Set_Timer.Stop();
-                AOF_Set_Timer = new System.Timers.Timer(5);
+                AOF_Set_Timer = new System.Timers.Timer(10);
                 AOF_Set_Timer.AutoReset = false;
                 AOF_Set_Timer.Elapsed += (s, e) =>
                 {
@@ -63,7 +63,7 @@ namespace DevEQ
             {
                 if (AOF_Set_Timer != null)
                     if (AOF_Set_Timer.Enabled) AOF_Set_Timer.Stop();
-                AOF_Set_Timer = new System.Timers.Timer(5);
+                AOF_Set_Timer = new System.Timers.Timer(10);
                 AOF_Set_Timer.AutoReset = false;
                 AOF_Set_Timer.Elapsed += (s, e) =>
                 {
@@ -234,6 +234,10 @@ namespace DevEQ
                           Message(MainModel.DevPath + " - файл считан успешно!");
                           OnPropertyChanged("IsDevRead");
                           OnPropertyChanged("DevName");
+                      }
+                      else
+                      {
+                          return;
                       }
 
                       Points = new ChartValues<ObservablePoint>();

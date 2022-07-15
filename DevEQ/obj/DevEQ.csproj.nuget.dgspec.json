@@ -1,34 +1,14 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\DevEQ.csproj": {}
+    "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj": {}
   },
   "projects": {
-    "C:\\Users\\anton\\Programming\\AO-Lib\\AO_Lib.csproj": {
-      "version": "1.0.0",
+    "E:\\Programming\\GitHub\\AO-Lib\\AO_Lib.csproj": {
       "restore": {
-        "projectUniqueName": "C:\\Users\\anton\\Programming\\AO-Lib\\AO_Lib.csproj",
+        "projectUniqueName": "E:\\Programming\\GitHub\\AO-Lib\\AO_Lib.csproj",
         "projectName": "AO_Lib",
-        "projectPath": "C:\\Users\\anton\\Programming\\AO-Lib\\AO_Lib.csproj",
-        "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anton\\Programming\\AO-Lib\\obj\\",
-        "projectStyle": "PackageReference",
-        "skipContentFileWrite": true,
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
-        "configFilePaths": [
-          "C:\\Users\\anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
-        ],
-        "originalTargetFrameworks": [
-          "net48"
-        ],
-        "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
-        },
+        "projectPath": "E:\\Programming\\GitHub\\AO-Lib\\AO_Lib.csproj",
         "frameworks": {
           "net48": {
             "projectReferences": {}
@@ -36,43 +16,21 @@
         }
       },
       "frameworks": {
-        "net48": {
-          "dependencies": {
-            "PrettyBin": {
-              "target": "Package",
-              "version": "[1.1.0, )"
-            }
-          }
-        }
-      },
-      "runtimes": {
-        "win": {
-          "#import": []
-        },
-        "win-x64": {
-          "#import": []
-        },
-        "win-x86": {
-          "#import": []
-        }
+        "net48": {}
       }
     },
-    "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\DevEQ.csproj": {
+    "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\DevEQ.csproj",
+        "projectUniqueName": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj",
         "projectName": "DevEQ",
-        "projectPath": "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\DevEQ.csproj",
+        "projectPath": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj",
         "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\obj\\",
+        "outputPath": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -85,8 +43,8 @@
         "frameworks": {
           "net48": {
             "projectReferences": {
-              "C:\\Users\\anton\\Programming\\AO-Lib\\AO_Lib.csproj": {
-                "projectPath": "C:\\Users\\anton\\Programming\\AO-Lib\\AO_Lib.csproj"
+              "E:\\Programming\\GitHub\\AO-Lib\\AO_Lib.csproj": {
+                "projectPath": "E:\\Programming\\GitHub\\AO-Lib\\AO_Lib.csproj"
               }
             }
           }

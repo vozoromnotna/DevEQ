@@ -96,15 +96,8 @@
           "lib/net48/MathNet.Numerics.dll": {}
         }
       },
-      "PrettyBin/1.1.0": {
-        "type": "package"
-      },
       "AO_Lib/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8",
-        "dependencies": {
-          "PrettyBin": "1.1.0"
-        },
         "compile": {
           "bin/placeholder/AO_Lib.dll": {}
         },
@@ -208,15 +201,8 @@
           "lib/net48/MathNet.Numerics.dll": {}
         }
       },
-      "PrettyBin/1.1.0": {
-        "type": "package"
-      },
       "AO_Lib/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8",
-        "dependencies": {
-          "PrettyBin": "1.1.0"
-        },
         "compile": {
           "bin/placeholder/AO_Lib.dll": {}
         },
@@ -320,15 +306,8 @@
           "lib/net48/MathNet.Numerics.dll": {}
         }
       },
-      "PrettyBin/1.1.0": {
-        "type": "package"
-      },
       "AO_Lib/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8",
-        "dependencies": {
-          "PrettyBin": "1.1.0"
-        },
         "compile": {
           "bin/placeholder/AO_Lib.dll": {}
         },
@@ -432,15 +411,8 @@
           "lib/net48/MathNet.Numerics.dll": {}
         }
       },
-      "PrettyBin/1.1.0": {
-        "type": "package"
-      },
       "AO_Lib/1.0.0": {
         "type": "project",
-        "framework": ".NETFramework,Version=v4.8",
-        "dependencies": {
-          "PrettyBin": "1.1.0"
-        },
         "compile": {
           "bin/placeholder/AO_Lib.dll": {}
         },
@@ -558,26 +530,6 @@
         "mathnet.numerics.nuspec"
       ]
     },
-    "PrettyBin/1.1.0": {
-      "sha512": "1XX4ibVi/4y96RJwBx8jSuYnOFeB3pepJtH6Vpl1gtsZamRuF3NGtywaJmhBlQPsBBi2ScnvYEmD7mVIsr2/iQ==",
-      "type": "package",
-      "path": "prettybin/1.1.0",
-      "hasTools": true,
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "README.md",
-        "content/App.config.install.xdt",
-        "license.txt",
-        "makePackage.bat",
-        "nuget.exe",
-        "prettybin.1.1.0.nupkg.sha512",
-        "prettybin.nuspec",
-        "tools/init.ps1",
-        "tools/install.ps1",
-        "tools/uninstall.ps1"
-      ]
-    },
     "AO_Lib/1.0.0": {
       "type": "project",
       "path": "../../AO-Lib/AO_Lib.csproj",
@@ -594,25 +546,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\anton\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\anton\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\DevEQ.csproj",
+      "projectUniqueName": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj",
       "projectName": "DevEQ",
-      "projectPath": "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\DevEQ.csproj",
+      "projectPath": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj",
       "packagesPath": "C:\\Users\\anton\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\obj\\",
+      "outputPath": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\anton\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -625,8 +572,8 @@
       "frameworks": {
         "net48": {
           "projectReferences": {
-            "C:\\Users\\anton\\Programming\\AO-Lib\\AO_Lib.csproj": {
-              "projectPath": "C:\\Users\\anton\\Programming\\AO-Lib\\AO_Lib.csproj"
+            "E:\\Programming\\GitHub\\AO-Lib\\AO_Lib.csproj": {
+              "projectPath": "E:\\Programming\\GitHub\\AO-Lib\\AO_Lib.csproj"
             }
           }
         }

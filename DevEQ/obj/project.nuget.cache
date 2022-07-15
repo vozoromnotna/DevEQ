@@ -1,15 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "2LCIrZjQiFOxUkSeaUv5RC5gR5b4mLnJN1CYCK3DsIqCOAqGCpLss9Y+z2+deoq07n8VJmPquP8Q6stPKymbZw==",
+  "dgSpecHash": "1CjVho/h4MloGNh5oQX1/JeKTupqIyjiB38pbotIZ7ARWeAqfLOVDP3Aum2Ks1h4/D3iNBKH1pXHqiK9mYy9Aw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\anton\\Programming\\DevEQ\\DevEQ\\DevEQ.csproj",
+  "projectFilePath": "E:\\Programming\\GitHub\\DevEQ\\DevEQ\\DevEQ.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\anton\\.nuget\\packages\\dependenciestracking\\1.0.4\\dependenciestracking.1.0.4.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\extended.wpf.toolkit\\4.3.0\\extended.wpf.toolkit.4.3.0.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\livecharts\\0.9.7\\livecharts.0.9.7.nupkg.sha512",
     "C:\\Users\\anton\\.nuget\\packages\\livecharts.wpf\\0.9.7\\livecharts.wpf.0.9.7.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512",
-    "C:\\Users\\anton\\.nuget\\packages\\prettybin\\1.1.0\\prettybin.1.1.0.nupkg.sha512"
+    "C:\\Users\\anton\\.nuget\\packages\\mathnet.numerics\\5.0.0\\mathnet.numerics.5.0.0.nupkg.sha512"
   ],
   "logs": []
 }

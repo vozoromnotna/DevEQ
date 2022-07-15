@@ -24,7 +24,8 @@ namespace DevEQ
         DevEQ_ViewModel vm;
 
         ObservableCollection<Grid> GridList;
-        ObservableCollection<Slider> SliderList;
+        ObservableCollection<Slider> XSliderList;
+        ObservableCollection<Slider> YSliderList;
         ObservableCollection<DoubleUpDown> XNudList;
         ObservableCollection<DoubleUpDown> YNudList;
         
@@ -55,7 +56,8 @@ namespace DevEQ
         {
 
             GridList = new ObservableCollection<Grid>();
-            SliderList = new ObservableCollection<Slider>();
+            XSliderList = new ObservableCollection<Slider>();
+            YSliderList = new ObservableCollection<Slider>();
             XNudList = new ObservableCollection<DoubleUpDown>();
             YNudList = new ObservableCollection<DoubleUpDown>();
             for (int i = 0; i < points.Count; i++)
@@ -67,21 +69,48 @@ namespace DevEQ
                 GridList[i].RowDefinitions.Add(new RowDefinition());
                 GridList[i].RowDefinitions.Add(new RowDefinition());
 
-                SliderList.Add(new Slider());
-                Grid.SetColumn(SliderList[i], 1);
-                Grid.SetRow(SliderList[i], 1);
+                GridList[i].Margin = new Thickness(10, 10, 10, 10);
+
+
+                YSliderList.Add(new Slider());
+                Grid.SetColumn(YSliderList[i], 1);
+                Grid.SetRow(YSliderList[i], 1);
+                YSliderList[i].VerticalAlignment = VerticalAlignment.Center;
+                YSliderList[i].Margin = new Thickness(10, 0, 10, 0);
+
+                XSliderList.Add(new Slider());
+                Grid.SetColumn(XSliderList[i], 1);
+                Grid.SetRow(XSliderList[i], 0);
+                XSliderList[i].VerticalAlignment = VerticalAlignment.Center;
+                XSliderList[i].Margin = new Thickness(10, 0, 10, 0);
 
                 XNudList.Add(new DoubleUpDown());
+                XNudList[i].FormatString = "0.000";
                 Grid.SetColumn(XNudList[i], 2);
                 Grid.SetRow(XNudList[i], 0);
 
                 YNudList.Add(new DoubleUpDown());
+                YNudList[i].FormatString = "0.0";
                 Grid.SetColumn(YNudList[i], 2);
                 Grid.SetRow(YNudList[i], 1);
 
-                GridList[i].Children.Add(SliderList[i]);
+                Label Xlabel = new Label { Content = "f = " };
+                Xlabel.HorizontalAlignment = HorizontalAlignment.Right;
+                Grid.SetColumn(Xlabel, 0);
+                Grid.SetRow(Xlabel, 0);
+
+                Label Ylabel = new Label { Content = "Power = " };
+                Ylabel.HorizontalAlignment = HorizontalAlignment.Right;
+                Grid.SetColumn(Ylabel, 0);
+                Grid.SetRow(Ylabel, 1);
+
+                GridList[i].Children.Add(YSliderList[i]);
+                GridList[i].Children.Add(XSliderList[i]);
                 GridList[i].Children.Add(XNudList[i]);
                 GridList[i].Children.Add(YNudList[i]);
+                GridList[i].Children.Add(Xlabel);
+                GridList[i].Children.Add(Ylabel);
+
 
                 Grid.SetRow(GridList[i], i);
                 #region Привязки
@@ -132,9 +161,13 @@ namespace DevEQ
                     UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged
                 };
 
-                SliderList[i].SetBinding(Slider.ValueProperty, YBinding);
-                SliderList[i].SetBinding(Slider.MaximumProperty, maxYBinding);
-                SliderList[i].SetBinding(Slider.MinimumProperty, minYBinding);
+                YSliderList[i].SetBinding(Slider.ValueProperty, YBinding);
+                YSliderList[i].SetBinding(Slider.MaximumProperty, maxYBinding);
+                YSliderList[i].SetBinding(Slider.MinimumProperty, minYBinding);
+
+                XSliderList[i].SetBinding(Slider.ValueProperty, XBinding);
+                XSliderList[i].SetBinding(Slider.MaximumProperty, maxXBinding);
+                XSliderList[i].SetBinding(Slider.MinimumProperty, minXBinding);
 
                 YNudList[i].SetBinding(DoubleUpDown.ValueProperty, YBinding);
                 YNudList[i].SetBinding(DoubleUpDown.MaximumProperty, maxYBinding);
