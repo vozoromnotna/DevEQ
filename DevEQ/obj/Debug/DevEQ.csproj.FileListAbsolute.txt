@@ -84,3 +84,5 @@ C:\Users\anton\Programming\DevEQ\DevEQ\obj\Debug\DevEQ.exe
 C:\Users\anton\Programming\DevEQ\DevEQ\obj\Debug\DevEQ.pdb
 C:\Users\anton\Programming\DevEQ\DevEQ\bin\Debug\DependenciesTracking.dll
 E:\Programming\GitHub\DevEQ\DevEQ\bin\Debug\DependenciesTracking.dll
+E:\Programming\GitHub\DevEQ\DevEQ\obj\Debug\Settings_Window.g.cs
+E:\Programming\GitHub\DevEQ\DevEQ\obj\Debug\Settings_Window.baml

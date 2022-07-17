@@ -240,26 +240,33 @@ namespace DevEQ
                           return;
                       }
 
-                      Points = new ChartValues<ObservablePoint>();
-                      for (int i = 0; i < MainModel.X.Count; i++)
-                      {
-                          Points.Add(new ObservablePoint(MainModel.X[i], MainModel.Y[i]));
-                          Points[i].PropertyChanged += (s, e) =>
-                          {
-                              var index = Points.IndexOf(s);
-                              MainModel.X[index] = Points[index].X;
-                              MainModel.Y[index] = Points[index].Y;
-                          };
-                      }
-                      Points.CollectionChanged += Points_CollectionChanged;
+                      UpdatePoints();
+
                       MainModel.Current_HZ = MainModel.Filter.HZ_Min;
                       MainModel.Current_WL = MainModel.Filter.WL_Max;
                       OnPropertyChanged("CurrentHZ");
                       OnPropertyChanged("CurrentWL");
-                      OnPropertyChanged("Points");
+                      
 
                   }));
             }
+        }
+
+        private void UpdatePoints()
+        {
+            Points = new ChartValues<ObservablePoint>();
+            for (int i = 0; i < MainModel.X.Count; i++)
+            {
+                Points.Add(new ObservablePoint(MainModel.X[i], MainModel.Y[i]));
+                Points[i].PropertyChanged += (s, e) =>
+                {
+                    var index = Points.IndexOf(s);
+                    MainModel.X[index] = Points[index].X;
+                    MainModel.Y[index] = Points[index].Y;
+                };
+            }
+            Points.CollectionChanged += Points_CollectionChanged;
+            OnPropertyChanged("Points");
         }
 
         private RelayCommand save_dev;
@@ -289,6 +296,22 @@ namespace DevEQ
                               Message(ex.Message);
                           }
                       }
+                  }));
+            }
+        }
+
+        private RelayCommand open_settings;
+        public RelayCommand OpenSettings
+        {
+            get
+            {
+                return open_settings ??
+                  (open_settings = new RelayCommand(obj =>
+                  {
+                      var Settings = new Settings_Window(this);
+                      Settings.ShowDialog();
+                      if (Points.Count != 0)
+                        UpdatePoints();
                   }));
             }
         }

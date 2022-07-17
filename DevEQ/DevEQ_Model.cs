@@ -89,7 +89,7 @@ namespace DevEQ
                 Interpolator = MathNet.Numerics.Interpolate.CubicSpline(X, Y);
                 for (int i = 0; i < Hzs.Count; i++)
                 {
-                    Intens[i] = Interpolator.Interpolate(Hzs[i]);
+                    Intens[i] = Interpolator.Interpolate(Hzs[i]) * maxIntense / 100;
                 }
                 var HzToAOF = Double2FloatArray(Hzs);
                 var IntensToAOF = Double2FloatArray(Intens);
@@ -123,7 +123,7 @@ namespace DevEQ
         public int PointsCount
         {
             get { return points_count; }
-            set { points_count = value; }
+            set { points_count = value; OnPropertyChanged(); }
         }
 
         private double min_x = 0;
@@ -133,7 +133,15 @@ namespace DevEQ
         public double maxX { get { return max_x; } private set { max_x = value; OnPropertyChanged(); } }
 
         public double minY { get { return 0; } }
-        public double maxY { get { return 2700; } }
+        public double maxY { get { return 100; } }
+
+        private double max_intense = 2700;
+        public double maxIntense
+        {
+            get { return max_intense; }
+            set { max_intense = value; OnPropertyChanged(); if (DevPath != null) IntializateInterpolator(); }
+        }
+
 
         public double minWL
         {
@@ -274,10 +282,11 @@ namespace DevEQ
             for (double i = minX; i <= maxX; i+= stepX)
             {
                 X.Add(i);
-                Y.Add(Interpolator.Interpolate(i));
+                Y.Add(Interpolator.Interpolate(i)/maxIntense * 100);
             }
             X.CollectionChanged += CollectionChanged;
             Y.CollectionChanged += CollectionChanged;
+            CollectionChanged(null, null);
         }
 
         private void UpdateData()
