@@ -77,5 +77,10 @@ namespace DevEQ
             if (ChB_Precise.IsChecked == false) G_Main.ColumnDefinitions[1].Width = new GridLength(0, GridUnitType.Star);
             if (ChB_Precise.IsChecked == true) G_Main.ColumnDefinitions[1].Width = new GridLength(30, GridUnitType.Star);
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            ViewModel.MainModel.Filter.PowerOff();
+        }
     }
 }

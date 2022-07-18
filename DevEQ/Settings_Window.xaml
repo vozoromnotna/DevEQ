@@ -7,9 +7,6 @@
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="Settings_Window" Height="244" Width="514">
-    <Window.DataContext>
-        <local:DevEQ_ViewModel x:Name="ViewModel"/>
-    </Window.DataContext>
     <Grid Margin="10,10,10,100">
         <Grid.Resources>
             <Style TargetType="{x:Type xctk:DoubleUpDown}">

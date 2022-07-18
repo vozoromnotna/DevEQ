@@ -29,6 +29,8 @@ namespace DevEQ
 
         Timer AOF_Set_Timer;
 
+        int AOF_Delay = 5;
+
         public double CurrentHZ
         {
             get
@@ -39,7 +41,7 @@ namespace DevEQ
             {
                 if (AOF_Set_Timer != null)
                     if (AOF_Set_Timer.Enabled) AOF_Set_Timer.Stop();
-                AOF_Set_Timer = new System.Timers.Timer(10);
+                AOF_Set_Timer = new System.Timers.Timer(AOF_Delay);
                 AOF_Set_Timer.AutoReset = false;
                 AOF_Set_Timer.Elapsed += (s, e) =>
                 {
@@ -63,7 +65,7 @@ namespace DevEQ
             {
                 if (AOF_Set_Timer != null)
                     if (AOF_Set_Timer.Enabled) AOF_Set_Timer.Stop();
-                AOF_Set_Timer = new System.Timers.Timer(10);
+                AOF_Set_Timer = new System.Timers.Timer(AOF_Delay);
                 AOF_Set_Timer.AutoReset = false;
                 AOF_Set_Timer.Elapsed += (s, e) =>
                 {

@@ -248,10 +248,12 @@ namespace DevEQ
                 dev_path = value;
                 try
                 {
+                    Filter.PowerOff();
                     var Status = Filter.Read_dev_file(dev_path);
                     FilterChaged();
                     if (Status != 0)
-                        throw new Exception(Filter.Implement_Error(Status)); 
+                        throw new Exception(Filter.Implement_Error(Status));
+                    Filter.PowerOn();
 
                 }
                 catch (Exception exc)

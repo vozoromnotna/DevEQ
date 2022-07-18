@@ -66,6 +66,11 @@ namespace DevEQ
                 GridList[i].ColumnDefinitions.Add(new ColumnDefinition());
                 GridList[i].ColumnDefinitions.Add(new ColumnDefinition());
                 GridList[i].ColumnDefinitions.Add(new ColumnDefinition());
+
+                GridList[i].ColumnDefinitions[0].Width = new GridLength(10, GridUnitType.Star);
+                GridList[i].ColumnDefinitions[1].Width = new GridLength(70, GridUnitType.Star);
+                GridList[i].ColumnDefinitions[2].Width = new GridLength(20, GridUnitType.Star);
+
                 GridList[i].RowDefinitions.Add(new RowDefinition());
                 GridList[i].RowDefinitions.Add(new RowDefinition());
 
