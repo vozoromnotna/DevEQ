@@ -57,7 +57,7 @@
                 </StackPanel>
                 <lvc:CartesianChart x:Name="Chart" Grid.Column="1" DataClick="Chart_DataClick" MouseDoubleClick="Chart_MouseDoubleClick">
                     <lvc:CartesianChart.AxisX>
-                        <lvc:Axis MinValue="{Binding MainModel.minX}" MaxValue="{Binding MainModel.maxX}" Title="f, MHz">
+                        <lvc:Axis MinValue="{Binding minX}" MaxValue="{Binding maxX}" Title="f, MHz">
                             <lvc:Axis.Sections>
                                 <lvc:AxisSection Value="{Binding CurrentHZ}"
                                          SectionWidth="0"
@@ -106,6 +106,11 @@
             </Grid>
         </ScrollViewer>-->
         <ListBox x:Name="PointsControlList" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderThickness="0" ItemsSource="{Binding Points}" HorizontalContentAlignment="Stretch" >
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Setter Property="Focusable" Value="False"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid Margin="5">

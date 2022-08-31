@@ -166,9 +166,20 @@ namespace DevEQ
             else { Message("Обнаружен подключенный АО фильтр. Тип фильтра: " + MainModel.Filter.FilterType.ToString()); }
 
             Points = new ChartValues<ObservablePoint>();
+            MainModel.PropertyChanged += MainModel_PropertyChanged;
 
         }
 
+        /// <summary>
+        /// Нужно для обновления свойств minX minY maxX maxY, м.б. использоваться и для других свойств имена которых в Model и в ViewModel совпадают
+        /// TODO: Найти решение получше
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MainModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged(e.PropertyName);
+        }
 
         private void Points_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
