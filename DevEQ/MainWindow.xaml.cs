@@ -25,7 +25,7 @@ namespace DevEQ
         public MainWindow()
         {
             InitializeComponent();
-            CLV = new ControlLsitView(G_ManualControl, ViewModel);
+            //CLV = new ControlLsitView(G_ManualControl, ViewModel);
             Chart.DataTooltip = null;
 
         }

@@ -98,6 +98,37 @@ namespace DevEQ
                 return str;
             }
         }
+
+        public double maxX
+        {
+            get
+            {
+                return MainModel.maxX;
+            }
+        }
+
+        public double minX
+        {
+            get
+            {
+                return MainModel.minX;
+            }
+        }
+
+        public double maxY
+        {
+            get
+            {
+                return MainModel.maxY;
+            }
+        }
+        public double minY
+        {
+            get
+            {
+                return MainModel.minY;
+            }
+        }
         public void Message(string message)
         {
             if (null == message)
