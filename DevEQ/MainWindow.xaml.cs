@@ -25,7 +25,6 @@ namespace DevEQ
         public MainWindow()
         {
             InitializeComponent();
-            //CLV = new ControlLsitView(G_ManualControl, ViewModel);
             Chart.DataTooltip = null;
 
         }
@@ -37,7 +36,8 @@ namespace DevEQ
             var point = Chart.ConvertToChartValues(e.GetPosition(Chart));
             ViewModel.Points[EditablePoint].X = point.X;
             ViewModel.Points[EditablePoint].Y = point.Y;
-
+            if (ChB_MouseTrack.IsChecked == true)
+                ViewModel.CurrentHZ = ViewModel.Points[EditablePoint].X;
         }
 
         private void Chart_MouseUp(object sender, MouseButtonEventArgs e)
@@ -59,6 +59,8 @@ namespace DevEQ
             if (EditablePoint == -1) return;
             Chart.MouseUp += Chart_MouseUp;
             Chart.MouseMove += Chart_MouseMove;
+            if (ChB_MouseTrack.IsChecked == true)
+                ViewModel.CurrentHZ = ViewModel.Points[EditablePoint].X;
         }
 
         private void Chart_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -81,6 +83,7 @@ namespace DevEQ
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             ViewModel.MainModel.Filter.PowerOff();
+            ViewModel.MainModel.Filter.Dispose();
         }
     }
 }

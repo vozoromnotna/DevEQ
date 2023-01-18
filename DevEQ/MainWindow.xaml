@@ -50,6 +50,7 @@
                     <Label Content="{Binding DevName}"/>
                     <Button Command="{Binding SaveDev}">Save</Button>
                     <CheckBox x:Name ="ChB_Precise" Click="ChB_Precise_Checked">Precise control</CheckBox>
+                    <CheckBox x:Name ="ChB_MouseTrack">Mouse Tracking</CheckBox>
                     <Button Visibility="Hidden">Rewrite Current Dev</Button>
                     <Button Visibility="Hidden">Calibration</Button>
                     <Button Command="{Binding OpenSettings}">Settings</Button>
@@ -61,10 +62,10 @@
                             <lvc:Axis.Sections>
                                 <lvc:AxisSection Value="{Binding CurrentHZ}"
                                          SectionWidth="0"
-                                         SectionOffset="-0.5"
+                                         SectionOffset="0"
                                          Fill="#59FF5722"
                                          Stroke="#ff5722"
-                                         StrokeThickness=".5"
+                                         StrokeThickness="1"
                                          DataLabelForeground="White"
                                          />
                             </lvc:Axis.Sections>
@@ -100,11 +101,6 @@
             </Grid>
         </Grid>
         <ListBox x:Name="LB_Logger" ItemsSource="{Binding Logs}" Grid.Column="0" Grid.ColumnSpan="1" Grid.RowSpan="1" Grid.Row="1"/>
-        <!--<ScrollViewer  Grid.Row="0" Grid.Column="1" Grid.RowSpan="2">
-            <Grid x:Name="G_ManualControl" Grid.Column="1" Grid.RowSpan="2">
-
-            </Grid>
-        </ScrollViewer>-->
         <ListBox x:Name="PointsControlList" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderThickness="0" ItemsSource="{Binding Points}" HorizontalContentAlignment="Stretch" >
             <ListBox.ItemContainerStyle>
                 <Style TargetType="{x:Type ListBoxItem}">

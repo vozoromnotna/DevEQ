@@ -57,6 +57,7 @@
     </ApplicationDefinition>
     <Compile Include="ControlLsitView.cs" />
     <Compile Include="DevEQ_Model.cs" />
+    <Compile Include="DevInteraction.cs" />
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Saver.cs" />
     <Compile Include="Settings_Window.xaml.cs">

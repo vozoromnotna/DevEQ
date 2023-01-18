@@ -69,10 +69,14 @@
       "LiveCharts/0.9.7": {
         "type": "package",
         "compile": {
-          "lib/net45/LiveCharts.dll": {}
+          "lib/net45/LiveCharts.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "runtime": {
-          "lib/net45/LiveCharts.dll": {}
+          "lib/net45/LiveCharts.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "LiveCharts.Wpf/0.9.7": {
@@ -81,19 +85,27 @@
           "LiveCharts": "0.9.7"
         },
         "compile": {
-          "lib/net45/LiveCharts.Wpf.dll": {}
+          "lib/net45/LiveCharts.Wpf.dll": {
+            "related": ".pdb;.XML"
+          }
         },
         "runtime": {
-          "lib/net45/LiveCharts.Wpf.dll": {}
+          "lib/net45/LiveCharts.Wpf.dll": {
+            "related": ".pdb;.XML"
+          }
         }
       },
       "MathNet.Numerics/5.0.0": {
         "type": "package",
         "compile": {
-          "lib/net48/MathNet.Numerics.dll": {}
+          "lib/net48/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net48/MathNet.Numerics.dll": {}
+          "lib/net48/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
         }
       },
       "PrettyBin/1.1.0": {
@@ -181,10 +193,14 @@
       "LiveCharts/0.9.7": {
         "type": "package",
         "compile": {
-          "lib/net45/LiveCharts.dll": {}
+          "lib/net45/LiveCharts.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "runtime": {
-          "lib/net45/LiveCharts.dll": {}
+          "lib/net45/LiveCharts.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "LiveCharts.Wpf/0.9.7": {
@@ -193,19 +209,27 @@
           "LiveCharts": "0.9.7"
         },
         "compile": {
-          "lib/net45/LiveCharts.Wpf.dll": {}
+          "lib/net45/LiveCharts.Wpf.dll": {
+            "related": ".pdb;.XML"
+          }
         },
         "runtime": {
-          "lib/net45/LiveCharts.Wpf.dll": {}
+          "lib/net45/LiveCharts.Wpf.dll": {
+            "related": ".pdb;.XML"
+          }
         }
       },
       "MathNet.Numerics/5.0.0": {
         "type": "package",
         "compile": {
-          "lib/net48/MathNet.Numerics.dll": {}
+          "lib/net48/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net48/MathNet.Numerics.dll": {}
+          "lib/net48/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
         }
       },
       "PrettyBin/1.1.0": {
@@ -293,10 +317,14 @@
       "LiveCharts/0.9.7": {
         "type": "package",
         "compile": {
-          "lib/net45/LiveCharts.dll": {}
+          "lib/net45/LiveCharts.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "runtime": {
-          "lib/net45/LiveCharts.dll": {}
+          "lib/net45/LiveCharts.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "LiveCharts.Wpf/0.9.7": {
@@ -305,19 +333,27 @@
           "LiveCharts": "0.9.7"
         },
         "compile": {
-          "lib/net45/LiveCharts.Wpf.dll": {}
+          "lib/net45/LiveCharts.Wpf.dll": {
+            "related": ".pdb;.XML"
+          }
         },
         "runtime": {
-          "lib/net45/LiveCharts.Wpf.dll": {}
+          "lib/net45/LiveCharts.Wpf.dll": {
+            "related": ".pdb;.XML"
+          }
         }
       },
       "MathNet.Numerics/5.0.0": {
         "type": "package",
         "compile": {
-          "lib/net48/MathNet.Numerics.dll": {}
+          "lib/net48/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net48/MathNet.Numerics.dll": {}
+          "lib/net48/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
         }
       },
       "PrettyBin/1.1.0": {
@@ -405,10 +441,14 @@
       "LiveCharts/0.9.7": {
         "type": "package",
         "compile": {
-          "lib/net45/LiveCharts.dll": {}
+          "lib/net45/LiveCharts.dll": {
+            "related": ".pdb;.xml"
+          }
         },
         "runtime": {
-          "lib/net45/LiveCharts.dll": {}
+          "lib/net45/LiveCharts.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "LiveCharts.Wpf/0.9.7": {
@@ -417,19 +457,27 @@
           "LiveCharts": "0.9.7"
         },
         "compile": {
-          "lib/net45/LiveCharts.Wpf.dll": {}
+          "lib/net45/LiveCharts.Wpf.dll": {
+            "related": ".pdb;.XML"
+          }
         },
         "runtime": {
-          "lib/net45/LiveCharts.Wpf.dll": {}
+          "lib/net45/LiveCharts.Wpf.dll": {
+            "related": ".pdb;.XML"
+          }
         }
       },
       "MathNet.Numerics/5.0.0": {
         "type": "package",
         "compile": {
-          "lib/net48/MathNet.Numerics.dll": {}
+          "lib/net48/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
         },
         "runtime": {
-          "lib/net48/MathNet.Numerics.dll": {}
+          "lib/net48/MathNet.Numerics.dll": {
+            "related": ".xml"
+          }
         }
       },
       "PrettyBin/1.1.0": {

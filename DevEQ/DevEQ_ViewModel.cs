@@ -160,11 +160,13 @@ namespace DevEQ
             {
                 Message("Не обнаружены именованные фильтры. Поиск неименнованного фильтра...");
                 MainModel.Filter = AO_Lib.AO_Devices.AO_Filter.Find_and_connect_AnyFilter();
+
             }
 
             if (MainModel.Filter.FilterType == AO_Lib.AO_Devices.FilterTypes.Emulator) { Message("ПРЕДУПРЕЖДЕНИЕ: Не обнаружены подключенные АО фильтры. Фильтр будет эмулирован."); }
             else { Message("Обнаружен подключенный АО фильтр. Тип фильтра: " + MainModel.Filter.FilterType.ToString()); }
-
+            if (MainModel.Filter.FilterType == AO_Lib.AO_Devices.FilterTypes.AOTF7)
+                MainModel.maxIntense = 100;
             Points = new ChartValues<ObservablePoint>();
             MainModel.PropertyChanged += MainModel_PropertyChanged;
 

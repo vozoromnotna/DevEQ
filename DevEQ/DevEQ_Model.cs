@@ -16,6 +16,7 @@ namespace DevEQ
 {
     public class DevEQ_Model : INotifyPropertyChanged
     {
+        private DevInteraction DI;
         private AO_Filter filter;
         public AO_Filter Filter
         {
@@ -119,7 +120,7 @@ namespace DevEQ
         private ObservableCollection<double> Intens;
         private IInterpolation Interpolator;
 
-        private int points_count = 10;
+        private int points_count = 15;
         public int PointsCount
         {
             get { return points_count; }
@@ -135,7 +136,7 @@ namespace DevEQ
         public double minY { get { return 0; } }
         public double maxY { get { return 100; } }
 
-        private double max_intense = 2700;
+        private double max_intense = 2100;
         public double maxIntense
         {
             get { return max_intense; }
@@ -304,26 +305,22 @@ namespace DevEQ
         {
             
             var Data_from_dev = Helper.Files.Read_txt(dev_path);
-            string[] AllStrings = Data_from_dev.ToArray();
             float[] Params = new float[3];
-            Hzs = new ObservableCollection<double>();
-            Wls = new ObservableCollection<double>();
-            Intens = new ObservableCollection<double>();
-            for (int i = 0; i < Data_from_dev.ToArray().Length; i++)
+            try
             {
-                try
-                {
-                    Helper.Files.Get_WLData_fromDevString(AllStrings[i], 3, Params);
-                    Hzs.Add(Params[0]); Wls.Add(Params[1]); Intens.Add(Params[2]);
-                }
-                catch
-                {
-                    continue;
-                }
+                Helper.Files.Get_WLData_fromDevString(Data_from_dev[0], 3, Params);
+                DI = new CommonDevInteraction();
+                (Hzs, Wls, Intens) = DI.ReadDevStrings(dev_path);
+                maxIntense = Intens.Max();
+
             }
-            Hzs.Reverse();
-            Wls.Reverse();
-            Intens.Reverse();
+            catch
+            {
+                DI = new OldDevInteraction();
+                (Hzs, Wls, Intens) = DI.ReadDevStrings(dev_path);
+                maxIntense = Intens.Max();
+            }
+
         }
 
         public async void SaveFileAsync(string Name)
@@ -333,8 +330,8 @@ namespace DevEQ
                 var HzToAOF = Double2FloatArray(Hzs);
                 var IntensToAOF = Double2FloatArray(Intens);
                 var WlsToAOF = Double2FloatArray(Wls);
-                DevSaver NewSaver = new DevSaver(HzToAOF.Reverse().ToArray(), WlsToAOF.Reverse().ToArray(), IntensToAOF.Reverse().ToArray(), Name);
-                NewSaver.Save();
+                DI.Save(HzToAOF.Reverse().ToArray(), WlsToAOF.Reverse().ToArray(), IntensToAOF.Reverse().ToArray(), Name);
+
             });
         }
 
