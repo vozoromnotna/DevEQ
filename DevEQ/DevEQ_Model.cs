@@ -11,6 +11,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using MathNet.Numerics.Interpolation;
 using System.Timers;
+using System.Xml.Linq;
 
 namespace DevEQ
 {
@@ -94,9 +95,18 @@ namespace DevEQ
                 }
                 var HzToAOF = Double2FloatArray(Hzs);
                 var IntensToAOF = Double2FloatArray(Intens);
-                var WlsToAof = Double2FloatArray(Wls);
-                Filter.EditAllData(WlsToAof.Reverse().ToArray(), HzToAOF.Reverse().ToArray(), IntensToAOF.Reverse().ToArray());
+                var WlsToAOF = Double2FloatArray(Wls);
+                Filter.EditAllData(WlsToAOF.Reverse().ToArray(), HzToAOF.Reverse().ToArray(), IntensToAOF.Reverse().ToArray());
                 Filter.Set_Hz(Filter.HZ_Current);
+                if (DI is OldDevInteraction)
+                {
+                    Filter.PowerOff();
+
+                    DI.Save(HzToAOF.Reverse().ToArray(), WlsToAOF.Reverse().ToArray(), IntensToAOF.Reverse().ToArray(), "temp.dev");
+                    var Status = Filter.Read_dev_file("temp.dev");
+
+                    Filter.PowerOn();
+                }
 
             };
             AOF_Set_Timer.Enabled = true;
