@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DevEQ" 
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf" xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="MainWindow" Height="650" Width="800"
+        Title="DevEQ" Height="650" Width="800"
         Closing="Window_Closing">
     <Window.DataContext>
         <local:DevEQ_ViewModel x:Name="ViewModel"/>
@@ -31,10 +31,12 @@
             </Grid.RowDefinitions>
             <Grid x:Name="G_PlotAndButtons" Grid.Column="0" Grid.Row="0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="180"/>
-                    <ColumnDefinition Width="80*"/>
+                    <ColumnDefinition Width="36.647"/>
+                    <ColumnDefinition Width="143.353"/>
+                    <ColumnDefinition Width="63*"/>
+                    <ColumnDefinition Width="557*"/>
                 </Grid.ColumnDefinitions>
-                <StackPanel x:Name ="SP_Buttons">
+                <StackPanel x:Name ="SP_Buttons" Grid.ColumnSpan="2">
                     <StackPanel.Resources>
                         <Style TargetType="{x:Type Button}">
                             <Setter Property="Margin" Value="10,10,10, 0"/>
@@ -50,13 +52,13 @@
                     <Label Content="{Binding DevName}"/>
                     <Button Command="{Binding SaveDev}">Save</Button>
                     <CheckBox x:Name ="ChB_Precise" Click="ChB_Precise_Checked">Precise control</CheckBox>
-                    <CheckBox x:Name ="ChB_MouseTrack">Mouse Tracking</CheckBox>
+                    <CheckBox x:Name ="ChB_MouseTrack" IsChecked="True">Mouse Tracking</CheckBox>
                     <Button Visibility="Hidden">Rewrite Current Dev</Button>
                     <Button Visibility="Hidden">Calibration</Button>
                     <Button Command="{Binding OpenSettings}">Settings</Button>
 
                 </StackPanel>
-                <lvc:CartesianChart x:Name="Chart" Grid.Column="1" DataClick="Chart_DataClick" MouseDoubleClick="Chart_MouseDoubleClick">
+                <lvc:CartesianChart x:Name="Chart" Grid.Column="2" DataClick="Chart_DataClick" MouseDoubleClick="Chart_MouseDoubleClick" Grid.ColumnSpan="2">
                     <lvc:CartesianChart.AxisX>
                         <lvc:Axis MinValue="{Binding minX}" MaxValue="{Binding maxX}" Title="f, MHz">
                             <lvc:Axis.Sections>
@@ -119,7 +121,7 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        <Label Grid.Column="0" Grid.Row="0" >f = </Label>
+                        <Label Grid.Column="0" Grid.Row="0" >f =</Label>
                         <xctk:DoubleUpDown Grid.Column="1" Grid.Row="0" Margin="10, 0, 10, 0" FormatString="0.000" Value="{Binding Path = X}"  Maximum="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.maxX}" Minimum="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.minX}"/>
                         <Slider Grid.Column="2" Grid.Row="0" Value="{Binding Path = X}" Maximum="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.maxX}" Minimum="{Binding RelativeSource={RelativeSource AncestorType={x:Type Window}}, Path=DataContext.minX}"/>
                         <Label Grid.Column="0" Grid.Row="1">Power =</Label>

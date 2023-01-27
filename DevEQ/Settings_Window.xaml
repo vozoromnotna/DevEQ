@@ -6,10 +6,16 @@
         xmlns:local="clr-namespace:DevEQ"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
-        Title="Settings_Window" Height="244" Width="514">
-    <Grid Margin="10,10,10,100">
+        Title="Settings" Height="244" Width="514">
+    <Window.Resources>
+        <local:InverseBooleanConverter x:Key="InverseBooleanConverter" />
+    </Window.Resources>
+    <Grid Margin="10,10,10,59">
         <Grid.Resources>
             <Style TargetType="{x:Type xctk:DoubleUpDown}">
+                <Setter Property="Margin" Value="10,10,10, 0"/>
+            </Style>
+            <Style TargetType="{x:Type xctk:IntegerUpDown}">
                 <Setter Property="Margin" Value="10,10,10, 0"/>
             </Style>
             <Style TargetType="{x:Type Label}">
@@ -26,10 +32,16 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Grid.Column="0">Количество точек при прочтении</Label>
         <Label Grid.Row="1" Grid.Column="0">Максимальная мощность</Label>
-        <xctk:DoubleUpDown Grid.Column="1" Grid.Row="0" Value="{Binding MainModel.PointsCount}"/>
+        <Label Grid.Row="2" Grid.Column="0" FontSize="11">Запись амплитуды для исходных частот</Label>
+        <Label Grid.Row="3" Grid.Column="0">Количество точек при записи</Label>
+        <xctk:IntegerUpDown Grid.Column="1" Grid.Row="0" Value="{Binding MainModel.PointsCount}"/>
         <xctk:DoubleUpDown Grid.Column="1" Grid.Row="1" Value="{Binding MainModel.maxIntense}"/>
+        <CheckBox x:Name="ChB_SaveHz" Grid.Column="1" Grid.Row="2" IsChecked="{Binding MainModel.SaveInitHz}"/>
+        <xctk:IntegerUpDown Grid.Column="1" Grid.Row="3" Value="{Binding MainModel.PointsCountToSave}" IsEnabled="{Binding MainModel.SaveInitHz, Converter={StaticResource InverseBooleanConverter}}"/>
     </Grid>
 </Window>

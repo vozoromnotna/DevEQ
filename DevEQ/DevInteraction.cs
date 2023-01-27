@@ -115,7 +115,7 @@ namespace DevEQ
             }
             catch
             {
-                throw new Exception("Saver: Save file error");
+                //throw new Exception("Saver: Save file error");
             }
             System.Threading.Thread.CurrentThread.CurrentCulture = CurCulture;
         }

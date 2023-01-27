@@ -34,10 +34,12 @@ namespace DevEQ
         {
             if (e.RightButton == MouseButtonState.Pressed) return;
             var point = Chart.ConvertToChartValues(e.GetPosition(Chart));
-            ViewModel.Points[EditablePoint].X = point.X;
+            
             ViewModel.Points[EditablePoint].Y = point.Y;
-            if (ChB_MouseTrack.IsChecked == true)
-                ViewModel.CurrentHZ = ViewModel.Points[EditablePoint].X;
+            if (ChB_MouseTrack.IsChecked == false)
+                ViewModel.Points[EditablePoint].X = point.X;
+
+
         }
 
         private void Chart_MouseUp(object sender, MouseButtonEventArgs e)

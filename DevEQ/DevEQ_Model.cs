@@ -100,12 +100,14 @@ namespace DevEQ
                 Filter.Set_Hz(Filter.HZ_Current);
                 if (DI is OldDevInteraction)
                 {
-                    Filter.PowerOff();
-
-                    DI.Save(HzToAOF.Reverse().ToArray(), WlsToAOF.Reverse().ToArray(), IntensToAOF.Reverse().ToArray(), "temp.dev");
-                    var Status = Filter.Read_dev_file("temp.dev");
-
-                    Filter.PowerOn();
+                    
+                    if (Filter.FilterType != FilterTypes.Emulator)
+                    {
+                        Filter.PowerOff();
+                        DI.Save(HzToAOF.Reverse().ToArray(), WlsToAOF.Reverse().ToArray(), IntensToAOF.Reverse().ToArray(), "temp.dev");
+                        var Status = Filter.Read_dev_file("temp.dev");
+                        Filter.PowerOn();
+                    }
                 }
 
             };
@@ -212,7 +214,33 @@ namespace DevEQ
             }
         }
 
+        private bool save_init_hz = true;
+        public bool SaveInitHz
+        {
+            get
+            {
+                return save_init_hz;
+            }
+            set
+            {
+                save_init_hz = value; OnPropertyChanged();
+            }
+        }
 
+        private int points_count_to_save = 15;
+
+        public int PointsCountToSave
+        {
+            get
+            {
+                return points_count_to_save;
+            }
+            set
+            {
+                points_count_to_save = value; OnPropertyChanged();
+            }
+
+        }
 
         public ObservableCollection<double> X;
 
@@ -333,16 +361,56 @@ namespace DevEQ
 
         }
 
-        public async void SaveFileAsync(string Name)
+        private (List<double> XToSave, List<double> YToSave) GetXYToSave()
         {
-            await Task.Run(() =>
+            List<double> XToSave = new List<double>();
+            List<double> YToSave = new List<double>();
+            var stepX = (maxX - minX) / ((double)PointsCountToSave);
+            for (double i = minX; i <= maxX; i += stepX)
             {
-                var HzToAOF = Double2FloatArray(Hzs);
-                var IntensToAOF = Double2FloatArray(Intens);
-                var WlsToAOF = Double2FloatArray(Wls);
-                DI.Save(HzToAOF.Reverse().ToArray(), WlsToAOF.Reverse().ToArray(), IntensToAOF.Reverse().ToArray(), Name);
+                XToSave.Add(i);
+                YToSave.Add(Interpolator.Interpolate(i) * maxIntense / 100);
+            }
+            return (XToSave, YToSave);
 
-            });
+        }
+
+        private List<double> GetWLsByHzs(List<double> HzList)
+        {
+            var WLInterpolator = MathNet.Numerics.Interpolate.CubicSpline(Hzs, Wls);
+
+            var WLsList = new List<double>();
+
+            foreach(var hz in HzList)
+            {
+                WLsList.Add(WLInterpolator.Interpolate(hz));
+            }
+
+            return WLsList;
+        }
+
+        public void SaveFileAsync(string Name)
+        {
+            IEnumerable<double> HzToSave;
+            IEnumerable<double> IntensToSave;
+            IEnumerable<double> WlToSave;
+            if (SaveInitHz)
+            {
+                HzToSave = Hzs;
+                IntensToSave = Intens;
+                WlToSave = Wls;
+            }
+            else
+            {
+                (HzToSave, IntensToSave) = GetXYToSave();
+                WlToSave = GetWLsByHzs(HzToSave as List<double>);
+            }
+            
+            var HzToAOF = Double2FloatArray(HzToSave);
+            var IntensToAOF = Double2FloatArray(IntensToSave);
+            var WlsToAOF = Double2FloatArray(WlToSave);
+            DI.Save(HzToAOF.Reverse().ToArray(), WlsToAOF.Reverse().ToArray(), IntensToAOF.Reverse().ToArray(), Name);
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
